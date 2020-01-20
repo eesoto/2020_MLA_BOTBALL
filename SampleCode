@@ -1,0 +1,43 @@
+#include <kipr/wombat.h>
+
+
+int main()
+{
+    //create_connect();
+    //wait_for_light();
+    shut_down_in(10);
+    int arm_port=0;
+    int arm_up=500;
+    int arm_down=1175;
+    int claw_port=1;
+	int claw_open=1800;
+	int claw_closed=750;
+    enable_servos();
+    set_servo_position(arm_port, arm_up);
+    set_servo_position(claw_port, claw_closed);
+    printf("Hello World\n");
+    motor(0, 100);
+    motor(3, 100);
+    msleep(2000);
+    ao();
+    set_servo_position(claw_port, claw_open);
+    msleep(2000);
+    set_servo_position(arm_port, arm_down);
+    msleep(2000);
+    set_servo_position(claw_port, claw_closed);
+    msleep(2000);
+    motor(0, -50);
+    motor(3, 100);
+    msleep(2000);
+    ao();
+    set_servo_position(claw_port, claw_open);
+    msleep(2000);
+    set_servo_position(arm_port, arm_up);
+    msleep(2000);
+    motor(0, 100);
+    motor(3, 100);
+    msleep(2000);
+    disable_servos();
+    ao();
+    return 0;
+}
